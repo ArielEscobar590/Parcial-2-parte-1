@@ -30,7 +30,7 @@ class Candidata:
                 archivo.write(f"{codigo}:{datos['Nombre']}:{datos['Edad']}:{datos['Instituto']}:{datos['Municipio']}\n")
 
     def agregar_candidatas(self, codigo, nombre,edad, instituto, municipio):
-        self.clientes[codigo] = {
+        self.candidatas[codigo] = {
             "Nombre": nombre,
             "Edad": edad,
             "Instituto": instituto,
@@ -40,7 +40,7 @@ class Candidata:
         print(f"Candidata {nombre} agregada y guardado correctamente.")
 
     def mostrar_todos(self):
-        if self.clientes:
+        if self.candidatas:
             print("\nLista de clientes:")
             for codigo, datos in self.candidatas.items():
                 print(f"\nCodigo: {codigo}")
@@ -51,7 +51,7 @@ class Candidata:
 
 
 class Concurso:
-    #candidata = Candidata()
+    candidata = Candidata()
     def __init__(self):
         self.ventana = tk.Tk()
         self.ventana.title("Eleccion de la Reina de la Independencia 2025")
