@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa47a205-2039-4f69-85fe-984ea4751744" name="Changes" comment="">
+    <list default="true" id="fa47a205-2039-4f69-85fe-984ea4751744" name="Changes" comment="ingreso datos">
       <change beforePath="$PROJECT_DIR$/Parcial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +70,17 @@
       <option name="presentableId" value="Default" />
       <updated>1757377816721</updated>
       <workItem from="1757377818081" duration="3000" />
-      <workItem from="1757378075159" duration="680000" />
+      <workItem from="1757378075159" duration="1030000" />
     </task>
+    <task id="LOCAL-00001" summary="ingreso datos">
+      <option name="closed" value="true" />
+      <created>1757378778359</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757378778359</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,5 +108,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ingreso datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="ingreso datos" />
   </component>
 </project>

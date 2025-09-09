@@ -16,3 +16,8 @@ class candidata(persona):
     def mostrar(self):
         print(f"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}")
 
+class jurador:
+    def __init__(self,nombre,especialidad,calificar):
+        self.nombre = nombre
+        self.especialidad = especialidad
+        self.calificar = calificar
