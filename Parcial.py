@@ -46,14 +46,52 @@ class Concurso:
 if __name__ == '__main__':
     Concurso()
 
-class candidata(persona):
-    def __init__(self,codigo, nombre, edad,instituto,educativo,municipio):
-        self.codigo = codigo
-        self.nombre = nombre
-        self.edad = edad
-        self.instituto = instituto
-        self.educativo = educativo
-        self.municipio = municipio
+class Candidata:
+    def __init__(self):
+        self.candidatas = {}
+        self.cargar_candidatas()
+
+    def cargar_candidatas(self):
+        try:
+            with open("candidatas.txt", "r", encoding="utf-8") as archivo:
+                for linea in archivo:
+                    linea = linea.strip()
+                    if linea:
+                        codigo, nombre, edad, instituto, municipio = linea.split(":")
+                        self.candidatas[codigo] = {
+                            "Nombre": nombre,
+                            "Edad": edad,
+                            "Instituto": instituto,
+                            "Municipio": municipio
+                        }
+            print("Candidatas importadas desde candidatas.txt")
+        except FileNotFoundError:
+            print("No existe el archivo candidatas.txt, se creará uno nuevo al guardar.")
+
+    def guardar_candidatas(self):
+        with open("candidatas.txt", "w", encoding="utf-8") as archivo:
+            for codigo, datos in self.candidatas.items():
+                archivo.write(f"{codigo}:{datos['Nombre']}:{datos['Edad']}:{datos['Instituto']}:{datos['Municipio']}\n")
+
+    def agregar_cliente(self, codigo, nombre,edad, instituto, municipio):
+        self.clientes[codigo] = {
+            "Nombre": nombre,
+            "Edad": edad,
+            "Instituto": instituto,
+            "Municipio": municipio
+        }
+        self.guardar_candidatas()
+        print(f"Candidata {nombre} agregada y guardado correctamente.")
+
+    def mostrar_todos(self):
+        if self.clientes:
+            print("\nLista de clientes:")
+            for codigo, datos in self.candidatas.items():
+                print(f"\nCodigo: {codigo}")
+                for clave, valor in datos.items():
+                    print(f"{clave}: {valor}")
+        else:
+            print("No hay Candidatas registrados.")
 
     def mostrar(self):
         print(f"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}")
