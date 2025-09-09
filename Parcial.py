@@ -23,7 +23,7 @@ class Concurso:
         opciones.add_command(label="Registrar candidatas", command=self.registrar_candidata)
         opciones.add_command(label="Registrar Jurado", command=self.registrar_jurado)
         opciones.add_command(label="Listar Bandas", command=self.calcular_puntaje)
-        opciones.add_command(label="Ver Ranking", command=self.guardar)
+        opciones.add_command(label="Guardar", command=self.guardar)
         opciones.add_separator()
         opciones.add_command(label="Salir", command=self.ventana.quit)
         barra.add_cascade(label="Opciones", menu=opciones)
