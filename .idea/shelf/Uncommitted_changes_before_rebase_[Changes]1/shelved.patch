@@ -1,0 +1,27 @@
+Index: Parcial.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class persona:\r\n    def __init__(self, nombre, edad):\r\n        self.nombre = nombre\r\n        self.edad = edad\r\n\r\n    def mostrar(self):\r\n        print(f\"Nombre: {self.nombre}- Edad={self.edad}\")\r\nclass candidata(persona):\r\n    def __init__(self,codigo, nombre, edad,instituto,educativo,municipio):\r\n        super().__init__(nombre, edad)\r\n        self.codigo = codigo\r\n        self.instituto = instituto\r\n        self.educativo = educativo\r\n        self.municipio = municipio\r\n\r\n    def mostrar(self):\r\n        print(f\"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}\")\r\n\r\nclass jurador:\r\n    def __init__(self,nombre,especialidad,calificar):\r\n        self.nombre = nombre\r\n        self.especialidad = especialidad\r\n        self.calificar = calificar\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Parcial.py b/Parcial.py
+--- a/Parcial.py	(revision a74e1293f8aba2c0628f655447e0eeb3d6897da4)
++++ b/Parcial.py	(date 1757379259979)
+@@ -16,8 +16,16 @@
+     def mostrar(self):
+         print(f"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}")
+ 
++cla
++
++
++
+ class jurador:
+     def __init__(self,nombre,especialidad,calificar):
+         self.nombre = nombre
+         self.especialidad = especialidad
+         self.calificar = calificar
++
++    def mostrar(self):
++        print(f"Nombre: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
++
