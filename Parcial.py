@@ -39,17 +39,6 @@ class Candidata:
         self.guardar_candidatas()
         print(f"Candidata {nombre} agregada y guardado correctamente.")
 
-    def mostrar_todos(self):
-        if self.candidatas:
-            print("\nLista de clientes:")
-            for codigo, datos in self.candidatas.items():
-                print(f"\nCodigo: {codigo}")
-                for clave, valor in datos.items():
-                    print(f"{clave}: {valor}")
-        else:
-            print("No hay Candidatas registrados.")
-
-
 class Concurso:
     candidata = Candidata()
     def __init__(self):
@@ -114,12 +103,34 @@ class Concurso:
 
 
 class jurador:
-    def __init__(self,nombre,especialidad,calificar):
-        self.nombre = nombre
-        self.especialidad = especialidad
-        self.calificar = calificar
+    def __init__(self):
+        self.jurado = {}
+        self.cargar_jurado()
 
-    def mostrar(self):
-        print(f"Nombre: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
+    def cargar_jurado(self):
+        try:
+            with open("jurado.txt", "r", encoding="utf-8") as archivo:
+                for linea in archivo:
+                    linea = linea.strip()
+                    if linea:
+                        nombre, especialidad = linea.split(":")
+                        self.jurado[nombre] = {
+                            "Especialidad": especialidad,
+                        }
+            print("Jurado importadas desde candidatas.txt")
+        except FileNotFoundError:
+            print("No existe el archivo jurado.txt, se creará uno nuevo al guardar.")
+
+    def guardar_jurado(self):
+        with open("jurado.txt", "w", encoding="utf-8") as archivo:
+            for nombre, datos in self.jurado.items():
+                archivo.write(f"{nombre}:{datos['Especialidad']}\n")
+
+    def agregar_jurado(self, nombre, especialidad):
+        self.jurado[nombre] = {
+            "Especialidad": especialidad,
+        }
+        self.guardar_jurado()
+        print(f"Jurado {nombre} agregada y guardado correctamente.")
 
 Concurso()
