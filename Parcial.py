@@ -30,10 +30,12 @@ class Concurso:
         self.ventana.config(menu=barra)
 
     def registrar_candidata(self):
-        pass
+        print("Se abrió la ventana: Registrar Candidata")
+        tk.Toplevel(self.ventana).title("Registrar Candidata")
 
     def registrar_jurado(self):
-        pass
+        print("Se abrió la ventana: Registrar Jurado")
+        tk.Toplevel(self.ventana).title("Registrar Jurado")
 
     def calcular_puntaje(self):
         pass
