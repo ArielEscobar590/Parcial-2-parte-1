@@ -1,3 +1,5 @@
+
+Dic_candidata={}
 class persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
@@ -16,7 +18,14 @@ class candidata(persona):
     def mostrar(self):
         print(f"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}")
 
-cla
+
+    def ingrear_candidatas(self):
+        cod=input("Ingrese el codigo de la candidata: ")
+        nombre=input("Ingrese el nombre: ")
+        edad=int(input("Ingrese el edad: "))
+        instituto=input("Ingrese el instituto: ")
+        educativo=input("Ingrese el educativo: ")
+        municipio=input("Ingrese el municipio: ")
 
 
 
