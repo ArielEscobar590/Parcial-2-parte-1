@@ -8,6 +8,7 @@ class Concurso:
         self.ventana.geometry("500x300")
         self.menu()
 
+
         tk.Label(
             self.ventana,
             text="Sistema de Evaluacion de la Independencia 2025",
@@ -32,6 +33,7 @@ class Concurso:
     def registrar_candidata(self):
         print("Se abrió la ventana: Registrar Candidata")
         tk.Toplevel(self.ventana).title("Registrar Candidata")
+        candidata = tk.Canvas()
 
     def registrar_jurado(self):
         print("Se abrió la ventana: Registrar Jurado")
