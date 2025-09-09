@@ -1,53 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-
-class Concurso:
-    def __init__(self):
-        self.ventana = tk.Tk()
-        self.ventana.title("Eleccion de la Reina de la Independencia 2025")
-        self.ventana.geometry("500x300")
-        self.menu()
-
-
-        tk.Label(
-            self.ventana,
-            text="Sistema de Evaluacion de la Independencia 2025",
-            font=("Arial", 12, "bold"),
-            justify="center"
-        ).pack(pady=50)
-
-        self.ventana.mainloop()
-
-    def menu(self):
-        barra = tk.Menu(self.ventana)
-        opciones = tk.Menu(barra, tearoff=0)
-        opciones.add_command(label="Registrar candidatas", command=self.registrar_candidata)
-        opciones.add_command(label="Registrar Jurado", command=self.registrar_jurado)
-        opciones.add_command(label="Listar Bandas", command=self.calcular_puntaje)
-        opciones.add_command(label="Guardar", command=self.guardar)
-        opciones.add_separator()
-        opciones.add_command(label="Salir", command=self.ventana.quit)
-        barra.add_cascade(label="Opciones", menu=opciones)
-        self.ventana.config(menu=barra)
-
-    def registrar_candidata(self):
-        print("Se abrió la ventana: Registrar Candidata")
-        tk.Toplevel(self.ventana).title("Registrar Candidata")
-        candidata = tk.Canvas()
-
-    def registrar_jurado(self):
-        print("Se abrió la ventana: Registrar Jurado")
-        tk.Toplevel(self.ventana).title("Registrar Jurado")
-
-    def calcular_puntaje(self):
-        pass
-
-    def guardar(self):
-        pass
-
-if __name__ == '__main__':
-    Concurso()
-
 class Candidata:
     def __init__(self):
         self.candidatas = {}
@@ -75,7 +27,7 @@ class Candidata:
             for codigo, datos in self.candidatas.items():
                 archivo.write(f"{codigo}:{datos['Nombre']}:{datos['Edad']}:{datos['Instituto']}:{datos['Municipio']}\n")
 
-    def agregar_cliente(self, codigo, nombre,edad, instituto, municipio):
+    def agregar_candidatas(self, codigo, nombre,edad, instituto, municipio):
         self.clientes[codigo] = {
             "Nombre": nombre,
             "Edad": edad,
@@ -95,8 +47,63 @@ class Candidata:
         else:
             print("No hay Candidatas registrados.")
 
-    def mostrar(self):
-        print(f"Codigo: {self.codigo}Nombre: {self.nombre}- Edad={self.edad}- Instituto={self.instituto}- Educativo={self.educativo}- Municipio={self.municipio}")
+
+class Concurso:
+    candidata = Candidata()
+    def __init__(self):
+        self.ventana = tk.Tk()
+        self.ventana.title("Eleccion de la Reina de la Independencia 2025")
+        self.ventana.geometry("500x300")
+        self.menu()
+
+        tk.Label(
+            self.ventana,
+            text="Sistema de Evaluacion de la Independencia 2025",
+            font=("Arial", 12, "bold"),
+            justify="center"
+        ).pack(pady=50)
+
+        self.ventana.mainloop()
+
+    def menu(self):
+        barra = tk.Menu(self.ventana)
+        opciones = tk.Menu(barra, tearoff=0)
+        opciones.add_command(label="Registrar candidatas", command=self.registrar_candidata)
+        opciones.add_command(label="Registrar Jurado", command=self.registrar_jurado)
+        opciones.add_command(label="Listar Bandas", command=self.calcular_puntaje)
+        opciones.add_command(label="Guardar", command=self.guardar)
+        opciones.add_separator()
+        opciones.add_command(label="Salir", command=self.ventana.quit)
+        barra.add_cascade(label="Opciones", menu=opciones)
+        self.ventana.config(menu=barra)
+
+    def registrar_candidata(self):
+        print("Se abrió la ventana: Registrar Candidata")
+        tk.Toplevel(self.ventana).title("Registrar Candidata")
+        codigo = tk.Entry(ventana)
+        codigo.pack(pady=5)
+        nombre = tk.Entry(ventana)
+        nombre.pack(pady=5)
+        edad = tk.Entry(ventana)
+        edad.pack(pady=5)
+        institucion = tk.Entry(ventana)
+        institucion.pack(pady=5)
+        municipio = tk.Entry(ventana)
+        municipio.pack(pady=5)
+
+        candidata.agregar_candidatas(codigo.get(),nombre.get(),edad.get(),institucion.get(),municipio.get())
+
+    def registrar_jurado(self):
+        print("Se abrió la ventana: Registrar Jurado")
+        tk.Toplevel(self.ventana).title("Registrar Jurado")
+
+    def calcular_puntaje(self):
+        pass
+
+    def guardar(self):
+        pass
+
+
 
 class jurador:
     def __init__(self,nombre,especialidad,calificar):
@@ -106,4 +113,3 @@ class jurador:
 
     def mostrar(self):
         print(f"Nombre: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
-
