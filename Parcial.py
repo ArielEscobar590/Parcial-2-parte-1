@@ -74,3 +74,4 @@ class eleccion_c:
     def mostrar_resultado(self):
         print(f"Resultado de {self.candidata.nombre} ({self._categoria}): {self.total()} puntos")
 
+
