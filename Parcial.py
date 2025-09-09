@@ -1,5 +1,7 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, Toplevel
+
+
 class Candidata:
     def __init__(self):
         self.candidatas = {}
@@ -49,7 +51,7 @@ class Candidata:
 
 
 class Concurso:
-    candidata = Candidata()
+    #candidata = Candidata()
     def __init__(self):
         self.ventana = tk.Tk()
         self.ventana.title("Eleccion de la Reina de la Independencia 2025")
@@ -79,19 +81,25 @@ class Concurso:
 
     def registrar_candidata(self):
         print("Se abrió la ventana: Registrar Candidata")
-        tk.Toplevel(self.ventana).title("Registrar Candidata")
-        codigo = tk.Entry(ventana)
-        codigo.pack(pady=5)
-        nombre = tk.Entry(ventana)
-        nombre.pack(pady=5)
-        edad = tk.Entry(ventana)
-        edad.pack(pady=5)
-        institucion = tk.Entry(ventana)
-        institucion.pack(pady=5)
-        municipio = tk.Entry(ventana)
-        municipio.pack(pady=5)
+        registro_can = tk.Toplevel(self.ventana)
+        registro_can.title("Registro Candidata")
+        tk.Label(registro_can, text="Codigo").grid(row=0, column=0)
+        codigo = tk.Entry(registro_can)
+        codigo.grid(row=0, column=1)
+        tk.Label(registro_can, text="Nombre").grid(row=1, column=0)
+        nombre = tk.Entry(registro_can)
+        nombre.grid(row=1, column=1)
+        tk.Label(registro_can, text="Edad").grid(row=2, column=0)
+        edad = tk.Entry(registro_can)
+        edad.grid(row=2, column=1)
+        tk.Label(registro_can, text="Instituto").grid(row=3, column=0)
+        institucion = tk.Entry(registro_can)
+        institucion.grid(row=3, column=1)
+        tk.Label(registro_can, text="Municipio").grid(row=4, column=0)
+        municipio = tk.Entry(registro_can)
+        municipio.grid(row=4, column=1)
 
-        candidata.agregar_candidatas(codigo.get(),nombre.get(),edad.get(),institucion.get(),municipio.get())
+        #candidata.agregar_candidatas(codigo.get(),nombre.get(),edad.get(),institucion.get(),municipio.get())
 
     def registrar_jurado(self):
         print("Se abrió la ventana: Registrar Jurado")
@@ -113,3 +121,5 @@ class jurador:
 
     def mostrar(self):
         print(f"Nombre: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
+
+Concurso()
