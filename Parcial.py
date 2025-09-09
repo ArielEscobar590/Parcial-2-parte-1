@@ -40,7 +40,7 @@ class jurador:
         self.calificar = calificar
 
     def mostrar(self):
-        print(f"Nombre: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
+        print(f"codigo: {self.nombre}- Especialidad={self.especialidad}- Calificar={self.calificar}")
 
     def ingreso_jurado(self):
         nombre=input("Ingrese el nombre: ")
@@ -50,3 +50,26 @@ class jurador:
         j=jurador(nombre,especialidad,calificar)
         j.ingreso_jurado()
         Dic_jurado[nombre]=j
+
+class eleccion_c:
+    CRITERIOS_VALIDOS = ["Cultura general", "Proyección escénica", "Entrevista"]
+
+    def __init__(self, candidata, categoria):
+        self.candidata = candidata
+        self._categoria = categoria
+        self._puntajes = {}
+
+    def registrar_puntajes(self, puntajes: dict):
+        if set(puntajes.keys()) != set(eleccion_c.CRITERIOS_VALIDOS):
+            raise ValueError("Faltan o sobran criterios de evaluación.")
+
+        for criterio, valor in puntajes.items():
+            if not (0 <= valor <= 10):
+                raise ValueError(f"Puntaje inválido en {criterio}. Debe estar entre 0 y 10.")
+        self._puntajes = puntajes
+
+    def total(self):
+        return sum(self._puntajes.values()) if self._puntajes else 0
+
+    def mostrar_resultado(self):
+        print(f"Resultado de {self.candidata.nombre} ({self._categoria}): {self.total()} puntos")
