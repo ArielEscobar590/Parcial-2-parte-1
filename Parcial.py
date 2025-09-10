@@ -78,6 +78,28 @@ class Jurado:
         print(f"Jurado {nombre} agregado y guardado correctamente.")
         return True
 
+class Elecciones:
+    CRITERIOS_VALIDOS = ["Cultura general", "Proyección escénica", "Entrevista"]
+
+    def __init__(self, candidata, categoria):
+        self.candidata = candidata
+        self._categoria = categoria
+        self._puntajes = {}
+
+    def registrar_puntajes(self, puntajes: dict):
+        if set(puntajes.keys()) != set(Elecciones.CRITERIOS_VALIDOS):
+            raise ValueError("Faltan o sobran criterios de evaluación.")
+
+        for criterio, valor in puntajes.items():
+            if not (0 <= valor <= 10):
+                raise ValueError(f"Puntaje inválido en {criterio}. Debe estar entre 0 y 10.")
+        self._puntajes = puntajes
+
+    def total(self):
+        return sum(self._puntajes.values()) if self._puntajes else 0
+
+    def mostrar_resultado(self):
+        print(f"Resultado de {self.candidata.nombre} ({self._categoria}): {self.total()} puntos")
 
 class Concurso:
     candidata = Candidata()
@@ -103,7 +125,8 @@ class Concurso:
         opciones = tk.Menu(barra, tearoff=0)
         opciones.add_command(label="Registrar Candidatas", command=self.registrar_candidata)
         opciones.add_command(label="Registrar Jurado", command=self.registrar_jurado)
-        opciones.add_command(label="Listar Candidatas", command=self.calcular_puntaje)
+        opciones.add_command(label="Listar Candidatas", command=self.listar_candidatas)
+        opciones.add_command(label="Puntuar Candidatas", command=self.puntuar_candidatas)
         opciones.add_command(label="Guardar", command=self.guardar)
         opciones.add_separator()
         opciones.add_command(label="Salir", command=self.ventana.quit)
@@ -174,7 +197,10 @@ class Concurso:
 
         tk.Button(registro_jur, text="Guardar", command=guardar_jurado).grid(row=2, column=0, columnspan=2, pady=10)
 
-    def calcular_puntaje(self):
+    def listar_candidatas(self):
+        pass
+
+    def puntuar_candidatas(self):
         pass
 
     def guardar(self):
